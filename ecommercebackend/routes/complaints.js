@@ -3,15 +3,16 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const Complaint = require('../models/complaintmodel');  // Import the Complaint model
 const router = express.Router();
+require('dotenv').config();
 
 // Configure nodemailer
 const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587,
+  host: process.env.SMTP_HOST,
+  port: process.env.SMTP_PORT,
   secure: false,
   auth: {
-    user: 'pecommerce8@gmail.com',
-    pass: 'rqrdabxuzpaecigz'
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
   },
   tls: {
     rejectUnauthorized: false

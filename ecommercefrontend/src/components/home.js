@@ -1,9 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect } from "react";
+import React, { useEffect} from "react";
+import { useNavigate } from 'react-router-dom';
 import "../index.css";
 
 const Home = () => {
+  const navigate = useNavigate();
+
   // Fetch products by categories on component mount
   useEffect(() => {
     fetchProductsByCategories();
@@ -28,6 +31,35 @@ const Home = () => {
     } catch (error) {
       console.log("Error getting products", error);
     }
+  };
+
+  const handleAddToCart = async (productId) => {
+    try {
+      const userId = localStorage.getItem('userId'); 
+      const quantity = 1; 
+
+      const response = await fetch("http://localhost:5000/addtocart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId, productId, quantity }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        console.log("Product added to cart successfully", data);
+        alert("Product added to cart successfully");
+      } else {
+        console.log("Error adding product to cart", data.message);
+      }
+    } catch (error) {
+      console.log("Error adding product to cart", error);
+    }
+  };
+
+  const handleProductClick = (productId) => {
+    navigate(`/${productId}`);
   };
 
   // Display products by categories
@@ -61,8 +93,13 @@ const Home = () => {
                 <p class="product-price">Price: $${product.price}</p>
                 <p class="product-stock">Available: ${product.inStockValue}</p>
                 <p class="product-sold">Sold: ${product.soldStockValue}</p>
-                <button class="add-to-cart" onclick="addToCart(${product.id})">Add to cart</button>
+                <button class="add-to-cart" >Add to cart</button>
             </div>`;
+            productCard.querySelector('.add-to-cart').addEventListener('click', (e) => {
+              e.stopPropagation();
+              handleAddToCart(product.productId);
+            });
+          productCard.addEventListener('click', () => handleProductClick(product.productId));
           categoryProductsContainer.appendChild(productCard);
         });
 
@@ -71,6 +108,7 @@ const Home = () => {
       }
     }
   };
+
 
   return (
     <div>
@@ -89,20 +127,23 @@ const Home = () => {
               <a href="/products">Products</a>
             </li>
             <li>
-              <a href="/about">About Us</a>
+              <a href="/about">About</a>
             </li>
             <li>
-              <a href="/contact">Contact Us</a>
+              <a href="/contact">Contact</a>
             </li>
           </ul>
         </nav>
-        <div className="cart">🛒</div>
+        <div className="cart"><a href="/cart">🛒</a></div>
         <div className="auth-links">
           <a href="/auth/login" className="login">
             🔑 Login
           </a>
           <a href="/auth/register" className="register">
             📝 Register
+          </a>
+          <a href="/auth/seller-register" className="become-seller">
+            🛍️ Become a Seller
           </a>
         </div>
       </header>

@@ -37,7 +37,8 @@ const Login = () => {
   };
 
   return (
-    <section id="login">
+    <div className="center-container">
+    <div id="login">
       <h2>Login</h2>
       <form id="login-form" className="login-form" onSubmit={handleLogin}>
         <div className="form-group">
@@ -73,7 +74,8 @@ const Login = () => {
           No Account? Register
         </button>
       </div>
-    </section>
+    </div>
+    </div>
   );
 };
 

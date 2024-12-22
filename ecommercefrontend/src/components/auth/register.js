@@ -44,7 +44,8 @@ const Register = () => {
   };
 
   return (
-    <section id="register">
+    <div className="center-container">
+    <div id="register">
       <h2>Register</h2>
       <form id="register-form" className="register-form" onSubmit={handleSubmit}>
         <div className="form-group">
@@ -66,10 +67,10 @@ const Register = () => {
         <button type="submit" className="submit-btn">Register</button>
       </form>
       <div className="additional-links">
-        <button onClick={() => window.location.href = '/seller-register'} className="additional-btn">Register as a Seller</button>
         <button onClick={() => window.location.href = '/auth/login'} className="additional-btn">Already Registered? Login</button>
       </div>
-    </section>
+    </div>
+    </div>
   );
 };
 

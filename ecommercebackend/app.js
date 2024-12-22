@@ -14,9 +14,11 @@ const cartRoutes = require('./routes/cart');
 const complaintsRoutes = require('./routes/complaints');
 const couponRoutes = require('./routes/coupon')
 const Product = require('./models/product');
+const dotenv = require('dotenv');
 //const PORTS = 3000;
 
 const app = express();
+dotenv.config();
 
 // Middleware
 app.use(cors({
@@ -39,11 +41,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(
   session({
-    secret: "a57cb2f7c4a1ef3a8a3c6a5bf213d998812de8fc7bb47da8b7347a92f9ec48d9",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      mongoUrl: "mongodb+srv://ecommerce:ecommerce@ecommerce.dunf0.mongodb.net/",
+      mongoUrl: process.env.MONGO_URL,
       collectionName: 'sessions',
     }),
     cookie: {
@@ -62,7 +64,7 @@ app.use('/complaints', complaintsRoutes);
 app.use('/coupon',couponRoutes)
 
 // MongoDB Connection
-const uri = "mongodb+srv://ecommerce:ecommerce@ecommerce.dunf0.mongodb.net/";
+const uri = process.env.MONGO_URL;
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -235,7 +237,7 @@ app.post('/:productId', async (req, res) => {
 
 
 // Get Product by ID Route
-app.get('/product/:productId', async (req, res) => {
+/*app.get('/product/:productId', async (req, res) => {
   try {
     const { productId } = req.params;
     const product = await Product.findById(productId);
@@ -258,7 +260,7 @@ app.get('/product/:productId', async (req, res) => {
       error: error.message
     });
   }
-});
+});*/
 
 // Update Stock Status Route
 app.post('/instock-update', async (req, res) => {
@@ -298,7 +300,6 @@ app.post('/instock-update', async (req, res) => {
   }
 });
 
-// Complaints Schema
 
 // Assign Product ID Route
 app.get('/assign-productid', async (req, res) => {
@@ -353,6 +354,8 @@ app.get('/assign-productid', async (req, res) => {
     });
   }
 });
+
+
 // Address Schema
 const addressSchema = new mongoose.Schema({
   userId: { type: String, unique: true },
@@ -397,6 +400,8 @@ app.post('/update-address', async (req, res) => {
     });
   }
 });
+
+
 // Order Schema
 const orderSchema = new mongoose.Schema({
   orderId: String,
@@ -433,7 +438,7 @@ app.get('/get-orders', async (req, res) => {
   }
 });
 
-// Get User Details Route
+// Get all User Details Route
 app.get('/get-user', async (req, res) => {
   try {
     const users = await mongoose.model('User').find(
@@ -494,6 +499,7 @@ app.put('/update-account-status', async (req, res) => {
 
 const otpStore = new Map();
 
+// Get Orders for a User Route
 app.post('/find-my-order', async (req, res) => {
   try {
     const { userId } = req.body;

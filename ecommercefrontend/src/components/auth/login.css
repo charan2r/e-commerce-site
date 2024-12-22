@@ -1,14 +1,15 @@
-/*body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #f3f4f7, #ffffff);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}*/
+/* Parent container for centering */
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background-color: #f9fafb; /* Optional background */
+  padding: 20px; /* For small screens */
+  box-sizing: border-box;
+}
 
+/* User login styles */
 #login {
     background: #ffffff;
     padding: 30px;
@@ -61,7 +62,7 @@
     color: #ffffff;
     padding: 10px 30px;
     width: 60%;
-    margin-left: 20%;
+    margin-left: 25%;
     font-size: 1rem;
     font-weight: bold;
     text-transform: uppercase;
@@ -87,9 +88,10 @@
     background-color: #46c9c9;
     color: #fff;
     border: none;
-    padding: 10px 30px;
+    padding: 15px 20px;
     cursor: pointer;
     border-radius: 5px;
+    margin-left: 30%;
     transition: background-color 0.3s;
     text-align: center;
     text-decoration: none;
@@ -125,3 +127,61 @@
         transform: translateY(0);
     }
 }
+
+
+  /* Seller Login styles */
+  .login-container {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  
+  .login-form h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-size: 1.8rem;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .form-input:focus {
+    border-color: #2563eb;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  }
+  
+
+  .form-button {
+    background-color: #2563eb;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .form-button:hover {
+    background-color: #1e3a8a;
+  }
+  
+  .form-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.5);
+  }
+  

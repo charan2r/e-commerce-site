@@ -9,12 +9,12 @@ const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587,
+  host: process.env.SMTP_HOST,
+  port: process.env.SMTP_PORT,
   secure: false,
   auth: {
-    user: `pecommerce8@gmail.com`,
-    pass: `rqrdabxuzpaecigz`
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
   },
   tls: {
     rejectUnauthorized: false
@@ -56,6 +56,7 @@ router.post('/get-cart', async (req, res) => {
   }
 });
 
+// Route to update quantity
 router.put('/update-quantity', async (req, res) => {
   const { userId, productId, productQty } = req.body;
 
@@ -85,6 +86,7 @@ router.put('/update-quantity', async (req, res) => {
     res.status(500).json({ message: 'An error occurred while updating the quantity.' });
   }
 });
+
 // Delete Item from Cart Route
 router.post('/delete-items', async (req, res) => {
   const { userId, productId } = req.body;
@@ -110,7 +112,7 @@ router.post('/delete-items', async (req, res) => {
   }
 });
 
-// Route to update quantity
+
 
 // Place Order Route
 router.post('/place-order', async (req, res) => {

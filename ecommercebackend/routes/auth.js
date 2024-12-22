@@ -72,6 +72,7 @@ router.post('/login', async (req, res) => {
     }
   });
 
+// Logout user
 router.post('/logout', (req, res) => {
   req.session.destroy((err) => {
     if (err) return res.status(500).json({ error: 'Error logging out' });
@@ -80,10 +81,11 @@ router.post('/logout', (req, res) => {
   });
 });
 
+// Get user details by userId
 router.get('/user/:userId', async (req, res) => {
     try {
       const { userId } = req.params;
-      const user = await User.findOne({ userId }, { name: 1, _id: 0 }); // Fetch only name
+      const user = await User.findOne({ userId }, { name: 1, email:1, phone:1, _id: 0 }); 
       if (!user) {
         return res.status(404).json({ error: 'User not found' });
       }
@@ -92,9 +94,10 @@ router.get('/user/:userId', async (req, res) => {
       res.status(500).json({ error: 'Error fetching user details' });
     }
   });
-  
+ 
 
-// Seller routes
+/*
+// Seller signup
 router.post('/seller/signup', async (req, res) => {
   try {
     const { phoneNumber, emailId, password, name, businessName, businessAddress, businessType } = req.body;
@@ -144,6 +147,7 @@ router.post('/seller/signup', async (req, res) => {
   }
 });
 
+// Seller login
 router.post('/seller/login', async (req, res) => {
   try {
     const { sellerId, emailOrPhone, password } = req.body;
@@ -180,6 +184,7 @@ router.post('/seller/login', async (req, res) => {
   }
 });
 
+// Seller logout
 router.post('/seller/logout', (req, res) => {
   req.session.destroy((err) => {
     if (err) return res.status(500).json({ error: 'Error logging out' });
@@ -188,6 +193,7 @@ router.post('/seller/logout', (req, res) => {
   });
 });
 
+// Get seller details by sellerId
 router.get('/seller/:sellerId', async (req, res) => {
   try {
     const { sellerId } = req.params;
@@ -207,7 +213,7 @@ router.get('/seller/:sellerId', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Error fetching seller details' });
   }
-});
+});*/
 
 
 module.exports = router;

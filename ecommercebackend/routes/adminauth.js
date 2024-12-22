@@ -4,7 +4,7 @@ const Seller = require('../models/seller'); // Adjust the path to your Seller sc
 const router = express.Router();
 
 // Seller Login
-router.post('/login', async (req, res) => {
+router.post('/seller-login', async (req, res) => {
   try {
     const { sellerId, emailOrPhone, password } = req.body;
 
@@ -118,6 +118,8 @@ router.post('/seller/signup', async (req, res) => {
   }
 });
 
+
+// Seller Verify
 router.post('/verify-seller', async (req, res) => {
   try {
     const { sellerId } = req.body;
@@ -154,7 +156,9 @@ router.post('/verify-seller', async (req, res) => {
   }
 });
 
-router.post('/logout', async (req, res) => {
+
+// Seller Logout
+router.post('/seller/logout', async (req, res) => {
   try {
     const { sellerId } = req.body;
 
@@ -192,6 +196,29 @@ router.post('/logout', async (req, res) => {
       error: 'Error logging out',
       details: error.message
     });
+  }
+});
+
+// Get seller details by sellerId
+router.get('/seller/:sellerId', async (req, res) => {
+  try {
+    const { sellerId } = req.params;
+    const seller = await Seller.findOne({ sellerId }, { 
+      name: 1,
+      email: 1,
+      businessName: 1,
+      businessAddress: 1,
+      businessType: 1,
+      _id: 0 
+    });
+    
+    if (!seller) {
+      return res.status(404).json({ error: 'Seller not found' });
+    }
+    
+    res.status(200).json(seller);
+  } catch (err) {
+    res.status(500).json({ error: 'Error fetching seller details' });
   }
 });
 
