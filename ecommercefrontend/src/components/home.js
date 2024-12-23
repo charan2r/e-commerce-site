@@ -3,7 +3,6 @@
 import React, { useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
 import "../index.css";
-import config from "../../config";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -15,7 +14,7 @@ const Home = () => {
 
   const fetchProductsByCategories = async () => {
     try {
-      const response = await fetch(`${config.BACKEND_URL}/product/category`, {
+      const response = await fetch("https://ecommercebackend-02c1173a604e.herokuapp.com/product/category", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +38,7 @@ const Home = () => {
       const userId = localStorage.getItem('userId'); 
       const quantity = 1; 
 
-      const response = await fetch(`${config.BACKEND_URL}/addtocart`, {
+      const response = await fetch("https://ecommercebackend-02c1173a604e.herokuapp.com/addtocart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
