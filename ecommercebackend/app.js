@@ -45,7 +45,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      mongoUrl: process.env.MONGO_URL,
+      mongoUrl: process.env.MONGO_URI,
       collectionName: 'sessions',
     }),
     cookie: {
@@ -64,7 +64,7 @@ app.use('/complaints', complaintsRoutes);
 app.use('/coupon',couponRoutes)
 
 // MongoDB Connection
-const uri = process.env.MONGO_URL;
+const uri = process.env.MONGO_URI;
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true
