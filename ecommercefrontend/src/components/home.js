@@ -14,7 +14,7 @@ const Home = () => {
 
   const fetchProductsByCategories = async () => {
     try {
-      const response = await fetch("http://localhost:5000/product/category", {
+      const response = await fetch("https://ecommercebackend-02c1173a604e.herokuapp.com/product/category", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,7 +38,7 @@ const Home = () => {
       const userId = localStorage.getItem('userId'); 
       const quantity = 1; 
 
-      const response = await fetch("http://localhost:5000/addtocart", {
+      const response = await fetch("https://ecommercebackend-02c1173a604e.herokuapp.com/addtocart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
