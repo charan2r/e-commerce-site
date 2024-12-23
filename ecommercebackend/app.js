@@ -49,8 +49,8 @@ app.use(
       collectionName: 'sessions',
     }),
     cookie: {
-      secure: false,
-      httpOnly: true,
+      secure: true,
+      //httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     },
   })
