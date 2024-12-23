@@ -39,7 +39,7 @@ const Home = () => {
       const userId = localStorage.getItem('userId'); 
       const quantity = 1; 
 
-      const response = await fetch("https://ecommercebackend-02c1173a604e.herokuapp.com/addtocart", {
+      const response = await fetch(`${config.BACKEND_URL}/addtocart`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
