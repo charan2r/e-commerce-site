@@ -24,7 +24,7 @@ const SellerSignup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/adminauth/seller/signup", {
+      const response = await fetch("https://ecommercebackend-02c1173a604e.herokuapp.com/adminauth/seller/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -20,7 +20,7 @@ const SellerLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/adminauth/seller-login', {
+      const response = await fetch('https://ecommercebackend-02c1173a604e.herokuapp.com/adminauth/seller-login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

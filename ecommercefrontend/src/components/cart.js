@@ -10,7 +10,7 @@ const Cart = () => {
       try {
         const userId = localStorage.getItem('userId');
 
-        const response = await fetch('https://ecommercebackend-02c1173a604e.herokuapp.com/cart/get-cart', {
+        const response = await fetch('https://ecommercebackend-02c1173a604e.herokuapp.com/get-cart', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
