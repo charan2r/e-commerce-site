@@ -97,30 +97,24 @@
   #hero {
     position: relative;
     overflow: hidden;
-    background: url('new.jpg') no-repeat center center/cover;
+    background: url('new.jpg') no-repeat center center/cover; /* credits to ambraee.com */
+    padding: 210px 40px;
+    text-align: center;
+    color: white; 
+    box-sizing: border-box;
+  }
+
+  #heroin {
+    position: relative;
+    overflow: hidden;
+    background: url('hello.jpg') no-repeat center center/cover; /* credits to ambraee.com */
     padding: 210px 40px;
     text-align: center;
     color: white; 
     box-sizing: border-box;
   }
   
-  .hero-banner {
-    position: relative;
-    z-index: 1;
-    background-color: rgba(0, 0, 0, 0.5); 
-    padding: 20px;
-    display: inline-block;
-  }
   
-  .hero-banner h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-  }
-  
-  .hero-banner p {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
   
 
   /* Products by category Section */

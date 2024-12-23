@@ -69,7 +69,7 @@ const Products = () => {
       </header>
 
       {/* Hero Section */}
-      <section id="hero"></section>
+      <section id="heroin"></section>
 
       {/* Products Section */}
       <section id="product">
