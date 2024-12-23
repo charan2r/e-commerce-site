@@ -3,6 +3,7 @@
 import React, { useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
 import "../index.css";
+import config from "../../config";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Home = () => {
 
   const fetchProductsByCategories = async () => {
     try {
-      const response = await fetch(`${process.env.BACKEND_URL}/product/category`, {
+      const response = await fetch(`${config.BACKEND_URL}/product/category`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
