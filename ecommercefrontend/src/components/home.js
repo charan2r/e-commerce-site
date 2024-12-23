@@ -14,7 +14,7 @@ const Home = () => {
 
   const fetchProductsByCategories = async () => {
     try {
-      const response = await fetch("https://ecommercebackend-02c1173a604e.herokuapp.com/product/category", {
+      const response = await fetch(`${process.env.BACKEND_URL}/product/category`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
