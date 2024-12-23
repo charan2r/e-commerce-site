@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-// filepath: /d:/Full-Stack Development/E-commerce Site/ecommercefrontend/src/components/ProductDetails.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './productdetails.css';
@@ -12,7 +11,7 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/${productId}`, {
+        const response = await fetch(`https://ecommercebackend-02c1173a604e.herokuapp.com/${productId}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -39,7 +38,7 @@ const ProductDetails = () => {
       const userId = localStorage.getItem('userId'); 
       const quantity = 1; 
 
-      const response = await fetch("http://localhost:5000/cart/addtocart", {
+      const response = await fetch("https://ecommercebackend-02c1173a604e.herokuapp.com/cart/addtocart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

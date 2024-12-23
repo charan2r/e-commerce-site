@@ -1,17 +1,17 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from "react";
 import "../index.css";
 
 const Products = () => {
   const [products, setProducts] = useState([]); // State to store products
-  const [loading, setLoading] = useState(true); // Loading state
-  const [error, setError] = useState(null); // Error state
+  const [error, setError] = useState(""); // State to track error
 
   // Fetch products from API on component mount
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:5000/get-product", {
+        const response = await fetch("https://ecommercebackend-02c1173a604e.herokuapp.com/get-product", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -26,21 +26,12 @@ const Products = () => {
         }
       } catch (error) {
         setError("Failed to fetch products.");
-      } finally {
-        setLoading(false); 
-      }
+      } 
     };
 
     fetchProducts();
   }, []);
 
-  if (loading) {
-    return <div>Loading products...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
 
   return (
     <div>
