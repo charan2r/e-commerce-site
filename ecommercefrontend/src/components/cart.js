@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import './cart.css';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const [cart, setCart] = useState(null);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCart = async () => {
       try {
         const userId = localStorage.getItem('userId');
+        if (!userId) {
+          setError('User not logged in');
+          alert('Please log in to view your cart');
+          navigate('/auth/login');
+          return;
+        }
 
         const response = await fetch('https://ecommercebackend-02c1173a604e.herokuapp.com/get-cart', {
           method: 'POST',
@@ -30,7 +38,7 @@ const Cart = () => {
     };
 
     fetchCart();
-  }, []);
+  }, [navigate]);
 
   const handleQuantityChange = async (productId, operation) => {
     try {
