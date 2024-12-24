@@ -97,25 +97,27 @@
   #hero {
     position: relative;
     overflow: hidden;
-    background: url('site.jpg') no-repeat center center/cover; 
-    padding: 210px 40px;
-    text-align: center;
+    background: url('new3.jpg') no-repeat center center/cover; 
+    padding: 50px 20px; 
     color: white; 
     box-sizing: border-box;
+    margin: 20px auto;
+    height: 340px; 
+    width: 85%;  
   }
 
   #heroin {
     position: relative;
     overflow: hidden;
     background: url('site.jpg') no-repeat center center/cover; 
-    padding: 210px 40px;
-    text-align: center;
+    padding: 50px 20px; 
     color: white; 
     box-sizing: border-box;
+    margin: 20px auto;
+    height: 300px; 
+    width: 85%;  
   }
-  
-  
-  
+    
 
   /* Products by category Section */
   #products {
