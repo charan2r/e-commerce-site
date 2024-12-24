@@ -27,6 +27,7 @@ const Cart = () => {
         });
 
         const data = await response.json();
+        console.log(data);
         if (response.ok) {
           setCart(data.cart);
         } else {
@@ -74,7 +75,6 @@ const Cart = () => {
       });
 
       const data = await response.json();
-      console.log(data);
       if (response.ok) {
         setCart(data.cart);
       } else {
