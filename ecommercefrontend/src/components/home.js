@@ -114,7 +114,7 @@ const Home = () => {
     <div>
       {/* Header Section */}
       <header className="modern">
-        <div className="logo">Mytalorzone By Sahiba</div>
+        <div className="logo">Aura Store</div>
         <nav>
           <ul>
             <li>

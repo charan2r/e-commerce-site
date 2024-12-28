@@ -6,7 +6,7 @@ const Contact = () => {
   return (
     <div>
       <header className="modern">
-        <div className="logo">Mytalorzone By Sahiba</div>
+        <div className="logo">Aura Store</div>
         <nav>
           <ul>
             <li><a href="/">Home</a></li>
