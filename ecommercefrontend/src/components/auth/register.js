@@ -42,6 +42,7 @@ const Register = () => {
       alert('Error registering user');
     }
   };
+  
 
   return (
     <div className="center-container">
