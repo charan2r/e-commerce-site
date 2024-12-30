@@ -26,7 +26,6 @@ const Login = () => {
 
       if (response.ok) {
         alert("Login successful");
-        localStorage.setItem("userId", result.userId); // Store the userId in local storage
         navigate("/"); // Navigate to the home page
       } else {
         setError(result.error || "Login failed");

@@ -33,7 +33,7 @@ const Register = () => {
 
       if (response.status === 201) {
         alert('User registered successfully');
-        window.location.href = '/login';
+        window.location.href = '/';
       } else {
         alert('Error registering user: ' + result.error);
       }
