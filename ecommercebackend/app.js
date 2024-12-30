@@ -2,27 +2,27 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const nodemailer = require('nodemailer');
+//const nodemailer = require('nodemailer');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const authRoutes = require('./routes/auth');
-const uuid = require('uuid');
-const bcrypt = require('bcrypt'); // Added bcrypt import
-const Seller = require('./models/seller');
+//const uuid = require('uuid');
+//const bcrypt = require('bcrypt'); 
+//const Seller = require('./models/seller');
 const adminAuthRoutes = require('./routes/adminauth'); 
 const cartRoutes = require('./routes/cart');
 const complaintsRoutes = require('./routes/complaints');
 const couponRoutes = require('./routes/coupon')
 const Product = require('./models/product');
 const dotenv = require('dotenv');
-//const PORTS = 3000;
+
 
 const app = express();
 dotenv.config();
 
 // Middleware
 app.use(cors({
-  origin: [' http://localhost:5173', 'http://localhost:3000'], 
+  origin: [' http://localhost:5173', 'http://localhost:3000', 'https://e-commerce-three-pi-59.vercel.app'], 
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
@@ -33,12 +33,8 @@ app.use(require('cookie-parser')());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Route to serve home.html
-/*app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'home.html'));
-});*/
 
-
+// Session Configuration
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -50,7 +46,7 @@ app.use(
     }),
     cookie: {
       secure: true,
-      //httpOnly: true,
+      httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     },
   })
@@ -64,13 +60,13 @@ app.use('/complaints', complaintsRoutes);
 app.use('/coupon',couponRoutes)
 
 // MongoDB Connection
-/*const uri = process.env.MONGO_URI;
+const uri = process.env.MONGO_URI;
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
 .then(() => console.log('Connected to MongoDB'))
-.catch(err => console.error('MongoDB connection error:', err));*/
+.catch(err => console.error('MongoDB connection error:', err));
 
 
 // Keep-Alive Route
@@ -97,15 +93,14 @@ app.post('/product/category', async (req, res) => {
       let searchCategory;
 
       switch (normalizedCategory) {
-        case 'gift-boxes':
-        case 'gift boxes':
-          searchCategory = 'Gift Boxes';
+        case 'electronics':
+          searchCategory = 'Electronics';
           break;
-        case 'books':
-          searchCategory = 'Books';
+        case 'computers':
+          searchCategory = 'Computers';
           break;
-        case 'stationery':
-          searchCategory = 'Stationery';
+        case 'furniture':
+          searchCategory = 'Furniture';
           break;
         default:
           searchCategory = category;
@@ -239,32 +234,6 @@ app.post('/:productId', async (req, res) => {
   }
 });
 
-
-// Get Product by ID Route
-/*app.get('/product/:productId', async (req, res) => {
-  try {
-    const { productId } = req.params;
-    const product = await Product.findById(productId);
-    
-    if (!product) {
-      return res.status(404).json({
-        success: false,
-        message: 'Product not found'
-      });
-    }
-
-    res.status(200).json({
-      success: true,
-      product
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false, 
-      message: 'Error fetching product',
-      error: error.message
-    });
-  }
-});*/
 
 // Update Stock Status Route
 app.post('/instock-update', async (req, res) => {
@@ -574,10 +543,6 @@ app.post('/find-my-order', async (req, res) => {
 });
 
 
-// Start the frontend server
-/*app.listen(PORTS, () => {
-  console.log(`Frontend is running on ${PORTS}`);
-});*/
 
 // Start the backend server
 const PORT = process.env.PORT || 5000;
