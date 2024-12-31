@@ -85,7 +85,7 @@ const Home = () => {
           productCard.classList.add("product-card");
           productCard.innerHTML = `
             <div class="product-image">
-                <img src="${product.img}" alt="${product.name}">
+                <img src="/public/images/${product.img}" alt="${product.name}">
             </div>
             <div class="product-info">
                 <h3>${product.name}</h3>

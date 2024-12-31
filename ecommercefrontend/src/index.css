@@ -97,25 +97,25 @@
   #hero {
     position: relative;
     overflow: hidden;
-    background: url('new3.jpg') no-repeat center center/cover; 
+    background: url('../src/components/images/ecommerce2.jpg') no-repeat center center/cover; 
     padding: 50px 20px; 
     color: white; 
     box-sizing: border-box;
     margin: 20px auto;
-    height: 340px; 
-    width: 85%;  
+    height: 500px; 
+    width: 100%;  
   }
 
   #heroin {
     position: relative;
     overflow: hidden;
-    background: url('site.jpg') no-repeat center center/cover; 
+    background: url('../src/components/images/ecommerce2.jpg') no-repeat center center/cover; 
     padding: 50px 20px; 
     color: white; 
     box-sizing: border-box;
     margin: 20px auto;
-    height: 300px; 
-    width: 85%;  
+    height: 400px; 
+    width: 100%;  
   }
     
 

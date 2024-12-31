@@ -65,6 +65,9 @@ const Products = () => {
           <a href="/auth/register" className="register">
             📝 Register
           </a>
+          <a href="/auth/seller-register" className="become-seller">
+            🛍️ Become a Seller
+          </a>
         </div>
       </header>
 

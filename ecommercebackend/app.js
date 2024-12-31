@@ -20,6 +20,9 @@ const dotenv = require('dotenv');
 const app = express();
 dotenv.config();
 
+
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
 // Middleware
 app.use(cors({
   origin: [' http://localhost:5173', 'http://localhost:3000', 'https://e-commerce-three-pi-59.vercel.app'], 
